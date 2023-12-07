@@ -1,0 +1,120 @@
+/* LogoFont */
+@font-face {
+    font-display: swap;
+    font-family: 'Fugaz One';
+    font-style: normal;
+    font-weight: 400;
+    src: url('@fonts/FugazOne-Regular.ttf') format('ttf');
+}
+
+/* Body Font */
+@font-face {
+    font-display: swap;
+    font-family: 'Signika';
+    font-style: normal;
+    font-weight: 300;
+    src: url('@fonts/Signika-Light.ttf') format('ttf');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Signika';
+    font-style: normal;
+    font-weight: 400;
+    src: url('@fonts/Signika-Regular.ttf') format('ttf');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Signika';
+    font-style: normal;
+    font-weight: 500;
+    src: url('@fonts/Signika-Medium.ttf') format('ttf');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Signika';
+    font-style: normal;
+    font-weight: 600;
+    src: url('@fonts/Signika-SemiBold.ttf') format('ttf');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Signika';
+    font-style: normal;
+    font-weight: 700;
+    src: url('@fonts/Signika-Bold.ttf') format('ttf');
+}
+
+:root {
+    /* Tokens colores */
+    --main-black: hsla(236, 36%, 9%, 1);
+    --main-white: hsla(259, 58%, 95%, 1);
+
+    --btn-color: hsla(259, 58%, 24%, 1);
+    --btn-color-hover: hsla(259, 43%, 53%, 1);
+
+    --celestial-blue: hsla(197, 100%, 43%, 1);
+    --giants-orange: hsla(16, 88%, 57%, 1);
+    --shamrock-green: hsla(164, 100%, 30%, 1);
+
+    /* Tokens fuentes */
+    --main-font-family: 'Signika', sans-serif;
+    --logo-font-family: 'Fugaz One', sans-serif;
+
+    --font-weight-title: 700;
+    --font-weight-subTitle: 500;
+    --font-weight-regular: 300;
+
+    --font-size-title: clamp(2.4rem, 4.8rem, 5.2rem);
+    --font-size-subTitle: clamp(1.8rem, 2.8rem, 3.8rem);
+    --font-size-regular: clamp(1.2rem, 1.4rem, 1.8rem);
+
+    /* Tokens Padding y margin */
+    --spacing-b: clamp(2rem, 4rem, 4rem);
+    --spacing-m: clamp(1rem, 2rem, 2rem);
+    --spacing-sm: clamp(.5rem, 1rem, 1rem);
+
+    --box-centered-h: 0 auto;
+
+    /* Width */
+    --max-width: 1440px;
+    --min-width: 300px;
+}
+
+* {
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%; 
+    font-family: var(--main-font-family);
+    color: var(--main-black);
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    border: none;
+}
+
+body {
+    width: 100%;
+    min-height: 100svh;
+    min-height: 100dvh;
+    min-height: 100vh;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
+}
