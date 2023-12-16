@@ -1,6 +1,8 @@
+import "@styles/pages/Home.css";
+
 const HomePage = () => {
     return `
-        <div class="home-layout">
+        <div class="home-page">
             <section class="hero-container">
                 <h2>Hero section</h2>
             </section>
@@ -9,13 +11,13 @@ const HomePage = () => {
                 <header class="trending-header">
                     <h2>Trending</h2>
 
-                    <button>See all</button>
+                    <button class="trending-btn">See all</button>
                 </header>
 
                 <div class="trending-carousel">
                     <button class="arrow left hidden"></button>
 
-                    <ul class="trending-wrapper">
+                    <ul class="wrapper trending--list">
                         
                     </ul>
 
@@ -26,7 +28,7 @@ const HomePage = () => {
             <section class="categories-container">
                 <h2>Categories</h2>
 
-                <ul class="categories-list">
+                <ul class="categories--list">
 
                 </ul>
             </section>
@@ -35,13 +37,13 @@ const HomePage = () => {
                 <header class="popular-header">
                     <h2>Popular</h2>
             
-                    <button>See all</button>
+                    <button class="popular-btn">See all</button>
                 </header>
             
                 <div class="popular-carousel">
                     <button class="arrow left hidden"></button>
             
-                    <ul class="popular-wrapper">
+                    <ul class="wrapper popular--list">
             
                     </ul>
             
@@ -53,13 +55,13 @@ const HomePage = () => {
                 <header class="upcoming-header">
                     <h2>Upcoming</h2>
             
-                    <button>See all</button>
+                    <button class="upcoming-btn">See all</button>
                 </header>
             
                 <div class="upcoming-carousel">
                     <button class="arrow left hidden"></button>
             
-                    <ul class="upcoming-wrapper">
+                    <ul class="wrapper upcoming--list">
             
                     </ul>
             

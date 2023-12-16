@@ -1,0 +1,44 @@
+.page-container {
+    width: var(--g-width);
+    max-width: var(--max-width);
+    min-width: var(--min-width);
+    margin: var(--box-centered-h);
+}
+
+.page-container .page--title {
+    width: var(--g-width);
+    padding: var(--spacing-m);
+}
+
+.page-container .page--title > h2 {
+    text-align: center;
+    font-size: var(--font-size-subTitle);
+    font-weight: var(--font-weight-subTitle);
+    color: var(--main-black);
+}
+
+.page-container .movies--list,
+.page-container .trending--list,
+.page-container .popular--list,
+.page-container .upcoming--list {
+    width: var(--g-width);
+    padding-block-end: var(--spacing-m);
+
+    display: grid;
+    gap: 2rem;
+    grid-auto-flow: dense;
+    grid-auto-rows: auto;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    place-items: center;
+}
+
+.page-container .categories--list {
+    width: var(--g-width);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-block-end: var(--spacing-b);
+}
+

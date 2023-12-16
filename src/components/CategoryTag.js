@@ -36,6 +36,7 @@ class CategoryTag extends HTMLElement {
                     background-color: ${this.dataset.bgColor};
                     border-radius: 6px;
                     padding: 1rem 1.4rem;
+                    cursor: pointer;
                 }
             </style>
         `;

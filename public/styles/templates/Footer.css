@@ -1,0 +1,15 @@
+/* FOOTER */
+.footer-container {
+    width: 100%;
+}
+
+.footer-container .footer-wrapper {
+    width: var(--g-width);
+    max-width: var(--max-width);
+    min-width: var(--min-width);
+    margin: var(--box-centered-h);
+    padding: var(--spacing-m);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,8 +1,8 @@
 import { api } from "@utils/constants/apiCommons.js";
 
-export default async function getUpcomingMoviesPreview() {
+export default async function getPopularMovies() {
     try {
-        const { data, status } = await api('/movie/upcoming');
+        const { data, status } = await api('/movie/popular');
 
         if (status != 200) {
             throw new Error(data.message);

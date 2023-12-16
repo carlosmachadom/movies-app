@@ -1,8 +1,12 @@
 import { api } from "@utils/constants/apiCommons.js";
 
-export default async function getTrendingMoviesPreview() {
+export default async function getMoviesByCategory({ id = "28" } = {}) { 
     try {
-        const { data, status } = await api('/trending/movie/day');
+        const { data, status } = await api('/discover/movie', {
+            params: {
+                with_genres: id
+            }
+        });
 
         if (status != 200) {
             throw new Error(data.message);

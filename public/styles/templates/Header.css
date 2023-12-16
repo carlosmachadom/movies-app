@@ -1,0 +1,26 @@
+/* HEADER */
+.header-container {
+    width: 100%;
+}
+
+.header-container {
+    width: var(--g-width);
+    padding: var(--spacing-m);
+}
+
+.header-container .navigation-container {
+    width: var(--g-width);
+    max-width: var(--max-width);
+    min-width: var(--min-width);
+    margin: var(--box-centered-h);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-container .navigation-container .navigation-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
