@@ -38,7 +38,7 @@ const Header = () => {
                         <input type="text">
                     </label>
     
-                    <input type="button" />
+                    <input type="button" value="Find"/>
                 </form>
             </section>
         </nav>

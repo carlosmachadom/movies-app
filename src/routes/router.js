@@ -26,7 +26,12 @@ import insertMoviesByCategory from "@views/renderMoviesByCategory";
 import CategoriesPage from "@pages/CateriesPage";
 
 /* Search Utils */
+import insertSearchResuls from "@views/renderSearchResults";
+import getSearchValue from "@utils/getSearchValue";
 import SearchPage from "@pages/SearchPage";
+
+/* Movie Details */
+import MovieDetailsPage from "@pages/MovieDetailsPage";
 
 
 /* Layout */
@@ -102,16 +107,29 @@ const Categories = () => {
                 insertMoviesByCategory();
             }
         });
+    } else {
+        insertMoviesByCategory();
     }
 }
 
 const Search = () => {
-    mainContainer.innerHTML = "";
-    mainContainer.innerHTML = SearchPage();
+    if (!$('.search-page')) {
+        mainContainer.innerHTML = "";
+        mainContainer.innerHTML = SearchPage();    
+        insertSearchResuls();
+    } else {
+        insertSearchResuls();
+    }
 }
 
-const MovieSelected = () => {
+const MovieSelected = async () => {
     console.log('Movie selected');
+
+    mainContainer.innerHTML = "";
+    mainContainer.innerHTML = await MovieDetailsPage();   
+    
+    //if (!$('.movie-page')) {
+    //}
 }
 
 const NotFound = () => {
@@ -141,6 +159,17 @@ const resolveRoute = async (route) => {
 
 const router = async () => {
     headerContainer.innerHTML = Header();
+    $(".search-contaner form > input[type=button]").addEventListener('click', async (e) => {
+        e.preventDefault();
+        const searchValue = await getSearchValue();
+
+        if (searchValue != null) {
+            location.hash = `search=${searchValue}`;
+        } else {
+            console.log("empty");
+        }
+    });
+
     footerContainer.innerHTML = Footer();
 
     let hash = await location.hash;

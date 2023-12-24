@@ -20,7 +20,8 @@
 .page-container .movies--list,
 .page-container .trending--list,
 .page-container .popular--list,
-.page-container .upcoming--list {
+.page-container .upcoming--list,
+.page-container .search--list {
     width: var(--g-width);
     padding-block-end: var(--spacing-m);
 
