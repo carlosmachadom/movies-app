@@ -13,14 +13,32 @@
     max-width: var(--max-width);
     min-width: var(--min-width);
     margin: var(--box-centered-h);
+    display: grid;
+    place-items: center;
+    gap: 2rem;
+}
+
+.header-container .navigation-container .navigation-wrapper {
+    width: var(--g-width);
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.header-container .navigation-container .navigation-list {
+.header-container .navigation-container .navigation-wrapper .navigation-list {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1rem;
+}
+
+
+@media (min-width: 668px) {
+    .header-container .navigation-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .header-container .navigation-container .search-container {
+        justify-self: end;
+    }
 }

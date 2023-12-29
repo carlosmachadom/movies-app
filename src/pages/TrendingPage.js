@@ -1,5 +1,3 @@
-import "@styles/pages/GeneralPages.css";
-
 const TrendingPage = () => {
     return `
         <section class="page-container">

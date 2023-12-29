@@ -4,7 +4,7 @@ export default async function getSearchValue() {
     let finalValue = null;
     const regex = /^[a-zA-Z0-9áéíóúüÜñÑ.,:;'"!¡¿?()\s-]*$/;
 
-    const searchValue = $(".search-contaner form > label input[type=text]").value;
+    const searchValue = null || $("#search").value;
 
     if (searchValue != "" && searchValue.match(regex)) {
         finalValue = searchValue;

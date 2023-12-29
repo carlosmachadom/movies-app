@@ -1,5 +1,3 @@
-import "@styles/pages/GeneralPages.css";
-
 const CategoriesPage = () => {
     return `
         <section class="page-container categories-page">

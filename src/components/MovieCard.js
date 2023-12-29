@@ -27,6 +27,15 @@ class MovieCard extends HTMLElement {
                     padding: 0;
                     font-size: var(--base-font-size);
                 }
+
+                .movie-card {
+                    width: 220px; 
+                }
+
+                .movie-card .card-image,
+                .movie-card .card-image img {
+                    width: 100%;
+                }
             </style>
         `;
     }

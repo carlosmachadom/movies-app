@@ -1,11 +1,11 @@
-import "@styles/pages/Home.css";
-
 const HomePage = () => {
     return `
         <div class="home-page">
-            <section class="hero-container">
-                <h2>Hero section</h2>
-            </section>
+            <!--
+                <section class="hero-container">
+                    <h2>Hero section</h2>
+                </section>
+             -->
 
             <section class="trending-container">
                 <header class="trending-header">

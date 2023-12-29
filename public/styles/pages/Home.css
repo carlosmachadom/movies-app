@@ -7,6 +7,8 @@
     min-width: var(--min-width);
     margin: var(--box-centered-h);
     margin-block-end: var(--spacing-b);
+    padding: var(--spacing-m);
+    padding-block-start: 0;
 }
 
 #main .trending-container .trending-header,
@@ -26,17 +28,52 @@
     color: var(--main-black);
 }
 
+#main .trending-container>.trending-header button,
+#main .popular-container>.popular-header button,
+#main .upcoming-container>.upcoming-header button {
+    padding: var(--padding-btn);
+    border-radius: 6px;
+    font-size: var(--font-size-regular);
+    font-weight: var(--font-weight-subTitle);
+    color: var(--main-black);
+}
+
 #main .trending-container>.trending-carousel,
 #main .popular-container>.popular-carousel,
 #main .upcoming-container>.upcoming-carousel {
-    overflow-x: hidden;
+    width: var(--g-width);
+    overflow: hidden;
 }
 
 #main .trending-container>.trending-carousel>.wrapper,
 #main .popular-container>.popular-carousel>.wrapper,
 #main .upcoming-container>.upcoming-carousel>.wrapper {
-    width: 100%;
     display: flex;
+    flex-wrap: nowrap;
+    gap: 2rem;
+
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+
+#main .trending-container>.trending-carousel>.wrapper::-webkit-scrollbar,
+#main .popular-container>.popular-carousel>.wrapper::-webkit-scrollbar,
+#main .upcoming-container>.upcoming-carousel>.wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+#main .trending-container>.trending-carousel>.wrapper.dragging,
+#main .popular-container>.popular-carousel>.wrapper.dragging,
+#main .upcoming-container>.upcoming-carousel>.wrapper.dragging {
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+}
+
+#main .trending-container>.trending-carousel>.wrapper li,
+#main .popular-container>.popular-carousel>.wrapper li,
+#main .upcoming-container>.upcoming-carousel>.wrapper li {
+    flex: 0 0 auto;
 }
 
 /* CATEGORIES SECTION */
@@ -46,6 +83,8 @@
     min-width: var(--min-width);
     margin: var(--box-centered-h);
     margin-block-end: var(--spacing-b);
+    padding: var(--spacing-m);
+    padding-block-start: 0;
 }
 
 #main .categories-container h2 {

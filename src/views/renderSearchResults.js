@@ -1,3 +1,5 @@
+import { $ } from "@utils/dom/selectors";
+
 import getSearchResults from "@api/getSearchResults";
 import renderMovies from "@utils/dom/renderMovies.js";
 
@@ -12,6 +14,7 @@ export default async function insertSearchResuls() {
         if (movies instanceof Error) {
             console.error(movies);
         } else if (movies != null) {
+            $('.search--title > span').innerText = searchValue.split('%20').join(" ").toLocaleUpperCase();
             renderMovies({ movies, selector: '.search--list' });
         }
     } catch (error) {

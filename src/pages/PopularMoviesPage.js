@@ -1,5 +1,3 @@
-import "@styles/pages/GeneralPages.css";
-
 const PopularMoviesPage = () => {
     return `
         <section class="page-container">

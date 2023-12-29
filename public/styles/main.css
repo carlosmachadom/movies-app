@@ -67,12 +67,15 @@
 
     --font-size-title: clamp(2.4rem, 4.8rem, 5.2rem);
     --font-size-subTitle: clamp(1.8rem, 2.8rem, 3.8rem);
+    --font-size-regular-big: clamp(1.4rem, 1.8rem, 2rem);
     --font-size-regular: clamp(1.2rem, 1.4rem, 1.8rem);
 
     /* Tokens Padding y margin */
     --spacing-b: clamp(2rem, 4rem, 4rem);
     --spacing-m: clamp(1rem, 2rem, 2rem);
     --spacing-sm: clamp(.5rem, 1rem, 1rem);
+
+    --padding-btn: 1rem 1.4rem;
 
     --box-centered-h: 0 auto;
 
@@ -115,6 +118,10 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
+}
+
+#main {
+    overflow: hidden;
 }
 
 /* Utils */

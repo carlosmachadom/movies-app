@@ -33,7 +33,6 @@ import SearchPage from "@pages/SearchPage";
 /* Movie Details */
 import MovieDetailsPage from "@pages/MovieDetailsPage";
 
-
 /* Layout */
 const headerContainer = null || $('#header');
 const footerContainer = null || $('#footer');
@@ -123,13 +122,19 @@ const Search = () => {
 }
 
 const MovieSelected = async () => {
-    console.log('Movie selected');
-
     mainContainer.innerHTML = "";
-    mainContainer.innerHTML = await MovieDetailsPage();   
-    
-    //if (!$('.movie-page')) {
-    //}
+    mainContainer.innerHTML = await MovieDetailsPage();
+
+    const categoriesList = null || $('.categories--list');
+    categoriesList.addEventListener('click', (e) => {
+        const categoryId = e.target.getAttribute('data-id');
+        const categoryTitle = e.target.getAttribute('data-title');
+
+        if (categoryId != null) {
+            location.hash = `#category=${categoryId}-${categoryTitle.split(' ').join('')}`;
+            insertMoviesByCategory();
+        }
+    });
 }
 
 const NotFound = () => {
@@ -159,7 +164,7 @@ const resolveRoute = async (route) => {
 
 const router = async () => {
     headerContainer.innerHTML = Header();
-    $(".search-contaner form > input[type=button]").addEventListener('click', async (e) => {
+    $(".search-container form > input[type=button]").addEventListener('click', async (e) => {
         e.preventDefault();
         const searchValue = await getSearchValue();
 
