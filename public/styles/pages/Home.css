@@ -42,7 +42,6 @@
 #main .popular-container>.popular-carousel,
 #main .upcoming-container>.upcoming-carousel {
     width: var(--g-width);
-    overflow: hidden;
 }
 
 #main .trending-container>.trending-carousel>.wrapper,
@@ -51,7 +50,7 @@
     display: flex;
     flex-wrap: nowrap;
     gap: 2rem;
-
+    
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
@@ -60,7 +59,7 @@
 #main .trending-container>.trending-carousel>.wrapper::-webkit-scrollbar,
 #main .popular-container>.popular-carousel>.wrapper::-webkit-scrollbar,
 #main .upcoming-container>.upcoming-carousel>.wrapper::-webkit-scrollbar {
-    display: none;
+    display: block;
 }
 
 #main .trending-container>.trending-carousel>.wrapper.dragging,
@@ -74,6 +73,12 @@
 #main .popular-container>.popular-carousel>.wrapper li,
 #main .upcoming-container>.upcoming-carousel>.wrapper li {
     flex: 0 0 auto;
+}
+
+#main .trending-container>.trending-carousel>.wrapper.dragging li,
+#main .popular-container>.popular-carousel>.wrapper.dragging li,
+#main .upcoming-container>.upcoming-carousel>.wrapper.dragging li {
+    cursor: grab;
 }
 
 /* CATEGORIES SECTION */

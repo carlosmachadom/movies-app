@@ -26,6 +26,8 @@ class MovieCard extends HTMLElement {
                     margin: 0;
                     padding: 0;
                     font-size: var(--base-font-size);
+
+                    user-select: none;
                 }
 
                 .movie-card {
@@ -49,6 +51,7 @@ class MovieCard extends HTMLElement {
                     <img
                         src="${this.dataset.movieSrc}"
                         alt="${this.dataset.movieTitle}"
+                        draggable="false"
                     />
                 </figure>
 
