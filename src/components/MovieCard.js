@@ -31,12 +31,19 @@ class MovieCard extends HTMLElement {
                 }
 
                 .movie-card {
-                    width: 220px; 
+                    min-width: 190px;
+                    width: 100%;
+                    max-width: 220px;                    
                 }
 
                 .movie-card .card-image,
                 .movie-card .card-image img {
                     width: 100%;
+                    height: 330px;
+                }
+
+                .movie-card .card-image {
+                    background-color: gray;
                 }
             </style>
         `;

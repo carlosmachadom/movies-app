@@ -1,5 +1,6 @@
 import getTrendingMovies from "@api/getTrendingMovies";
 import renderMovies from "@utils/dom/renderMovies";
+import { $, $$ } from "@utils/dom/selectors";
 
 export default async function insertTrendingMovies() { 
     try {
@@ -8,7 +9,9 @@ export default async function insertTrendingMovies() {
         if (movies instanceof Error) {
             console.error(movies);
         } else if (movies != null) {
-            renderMovies({ movies, selector: '.trending--list'});
+            renderMovies({ movies, selector: '.trending--list' });
+            
+            console.log($$('movie-card'));
         }
     } catch (error) {
         console.error(error);

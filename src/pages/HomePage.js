@@ -1,4 +1,10 @@
+import createMovieCardsLoadingSkeletons from "@utils/dom/renderMovieCardSkeletons";
+import categoryTagLoadingSkeletons from "@utils/dom/renderCategoryTagSkeleton";
+
 const HomePage = () => {
+    const skeletons = createMovieCardsLoadingSkeletons();
+    const categorySkeletons = categoryTagLoadingSkeletons();
+
     return `
         <div class="home-page">
             <!--
@@ -18,7 +24,7 @@ const HomePage = () => {
                     <button class="arrow left hidden"></button>
 
                     <ul class="wrapper trending--list">
-                        
+                        ${skeletons.map((skeleton) => {return `<li>${skeleton.outerHTML}</li>`}).join('')}
                     </ul>
 
                     <button class="arrow right hidden"></button>
@@ -29,7 +35,7 @@ const HomePage = () => {
                 <h2>Categories</h2>
 
                 <ul class="categories--list">
-
+                    ${categorySkeletons.map((skeleton) => {return `<li>${skeleton.outerHTML}</li>`}).join('')}
                 </ul>
             </section>
 
@@ -44,7 +50,7 @@ const HomePage = () => {
                     <button class="arrow left hidden"></button>
             
                     <ul class="wrapper popular--list">
-            
+                        ${skeletons.map((skeleton) => {return `<li>${skeleton.outerHTML}</li>`}).join('')}
                     </ul>
             
                     <button class="arrow right hidden"></button>
@@ -62,7 +68,7 @@ const HomePage = () => {
                     <button class="arrow left hidden"></button>
             
                     <ul class="wrapper upcoming--list">
-            
+                        ${skeletons.map((skeleton) => {return `<li>${skeleton.outerHTML}</li>`}).join('')}
                     </ul>
             
                     <button class="arrow right hidden"></button>

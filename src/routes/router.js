@@ -1,5 +1,5 @@
 /* Dom manipulation utils */
-import { $ } from "@utils/dom/selectors";
+import { $, $$ } from "@utils/dom/selectors";
 
 /* Layout Utils*/
 import Header from "@templates/Header";
@@ -32,6 +32,10 @@ import SearchPage from "@pages/SearchPage";
 
 /* Movie Details */
 import MovieDetailsPage from "@pages/MovieDetailsPage";
+import insertSimilarMovies from "@views/renderSimilarMovies";
+
+/* Lazy loading */
+import observer from "@utils/observer.js";
 
 /* Layout */
 const headerContainer = null || $('#header');
@@ -122,19 +126,25 @@ const Search = () => {
 }
 
 const MovieSelected = async () => {
-    mainContainer.innerHTML = "";
-    mainContainer.innerHTML = await MovieDetailsPage();
+    if (!$('details-page')) {
+        mainContainer.innerHTML = "";
+        mainContainer.innerHTML = await MovieDetailsPage();
+        const movieId = location.hash.split('=')[1];
 
-    const categoriesList = null || $('.categories--list');
-    categoriesList.addEventListener('click', (e) => {
-        const categoryId = e.target.getAttribute('data-id');
-        const categoryTitle = e.target.getAttribute('data-title');
+        const categoriesList = null || $('.categories--list');
+        
+        categoriesList.addEventListener('click', (e) => {
+            const categoryId = e.target.getAttribute('data-id');
+            const categoryTitle = e.target.getAttribute('data-title');
 
-        if (categoryId != null) {
-            location.hash = `#category=${categoryId}-${categoryTitle.split(' ').join('')}`;
-            insertMoviesByCategory();
-        }
-    });
+            if (categoryId != null) {
+                location.hash = `#category=${categoryId}-${categoryTitle.split(' ').join('')}`;
+                insertMoviesByCategory();
+            }
+        });
+
+        insertSimilarMovies({ id: movieId });
+    }
 }
 
 const NotFound = () => {
@@ -160,6 +170,9 @@ const resolveRoute = async (route) => {
     r.includes('=') ? r = r.split("=")[0] + "=" : r;
 
     routes[r] ? routes[r]() : routes['*']();
+
+    //[...$$('movie-card')].map(card => observer.observe(card)); 
+    //console.log($$('movie-card'));
 }
 
 const router = async () => {
@@ -179,7 +192,10 @@ const router = async () => {
 
     let hash = await location.hash;
     (hash == "") ? hash = "/" : hash;
-    resolveRoute(hash)
+    resolveRoute(hash);
 }
+
+
+
 
 export default router;

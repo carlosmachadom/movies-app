@@ -1,6 +1,7 @@
 import getMovieMyId from "@api/getMovieById";
-import getSimilarMovies from "@api/getSimilaMovies";
+
 import categoryColors from "@utils/constants/category-colors";
+import createMovieCardsLoadingSkeletons from "@utils/dom/renderMovieCardSkeletons";
 
 const MovieDetailsPage = async () => {
     const id = location.hash.split('=')[1];
@@ -14,11 +15,10 @@ const MovieDetailsPage = async () => {
         release_date,
         genres
     } = await getMovieMyId({ id });
-
-    const similarMovies = await getSimilarMovies({ id });
+    const skeletons = createMovieCardsLoadingSkeletons();
 
     return `
-        <section class="page-container movie-page">
+        <section class="page-container movie-page details-page">
             <header class="movie-header" style="
                 background-image: url(${`https://image.tmdb.org/t/p/original${backdrop_path}`});
             ">
@@ -57,19 +57,7 @@ const MovieDetailsPage = async () => {
                 <h3 class="similar-movies--title">Similar Movies</h3>
                 <div class="movies-wrapper"> 
                     <ul class="wrapper movies--list">
-                        ${similarMovies.map(movie => {
-                            const movieLink = document.createElement('a');
-                            movieLink.classList.add('item--link');
-                            movieLink.href = `#movie=${movie.id}`;
-
-                            const movieCard = document.createElement('movie-card');
-                            movieCard.dataset.movieTitle = movie.title;
-                            movieCard.dataset.movieSrc = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
-
-                            movieLink.appendChild(movieCard);
-
-                            return `<li class="list-item">${movieLink.outerHTML}</li>`;
-                        }).join('')}
+                        ${skeletons.map((skeleton) => { return `<li>${skeleton.outerHTML}</li>`}).join('')}
                     </ul>                
                 </div>
             <div>
