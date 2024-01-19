@@ -56,7 +56,7 @@ class MovieCard extends HTMLElement {
             <article class="movie-card">
                 <figure class="card-image">
                     <img
-                        src="${this.dataset.movieSrc}"
+                        src=""
                         alt="${this.dataset.movieTitle}"
                         draggable="false"
                     />

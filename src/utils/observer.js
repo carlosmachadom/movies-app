@@ -1,19 +1,29 @@
-async function callback(entries) {
-    entries.forEach(element => {
-        console.log(element);
-        /* if (element.getAttribute('data-movie-src')) {
-            console.log(true);
-            //element.shadowRoot().querySelector('.movie-card .card-image img').src = element.getAttribute('data-movie-src');
-        } */        
-    });
+async function createObserver({ parentNode = null } = {}) {
+    function callback(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                let item = entry.target;
+                let imageUrl = item.attributes[1].nodeValue;
+
+                let card = parentNode.querySelector(`${item.localName}[data-movie-title="${item.attributes[0].nodeValue}"]`);
+                let cardImage = card.shadowRoot.querySelector('.card-image img');
+    
+                cardImage.setAttribute('src', imageUrl);
+
+                observer.unobserve(card);
+            }
+        });
+    }
+    
+    let options = {
+        root: parentNode,
+        rootMargin: "0px",
+        threshold: 0.5,
+    };
+    
+    const observer = new IntersectionObserver(callback, options);
+
+    parentNode.querySelectorAll('movie-card').forEach(card => observer.observe(card));
 }
 
-let options = {
-  root: null,
-  rootMargin: "0px",
-  threshold: 0.2,
-};
-
-const observer = new IntersectionObserver(callback, options);
-
-export default observer;
+export default createObserver;

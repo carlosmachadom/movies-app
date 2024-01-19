@@ -34,9 +34,6 @@ import SearchPage from "@pages/SearchPage";
 import MovieDetailsPage from "@pages/MovieDetailsPage";
 import insertSimilarMovies from "@views/renderSimilarMovies";
 
-/* Lazy loading */
-import observer from "@utils/observer.js";
-
 /* Layout */
 const headerContainer = null || $('#header');
 const footerContainer = null || $('#footer');
@@ -170,9 +167,6 @@ const resolveRoute = async (route) => {
     r.includes('=') ? r = r.split("=")[0] + "=" : r;
 
     routes[r] ? routes[r]() : routes['*']();
-
-    //[...$$('movie-card')].map(card => observer.observe(card)); 
-    //console.log($$('movie-card'));
 }
 
 const router = async () => {
