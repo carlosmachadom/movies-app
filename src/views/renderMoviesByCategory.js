@@ -1,8 +1,9 @@
 import getMoviesByCategory from "@api/getMoviesByCategory";
 import renderMovies from "@utils/dom/renderMovies";
-import { $ } from "@utils/dom/selectors.js";
+import { $ } from "@utils/dom/selectors";
+import createObserver from "@utils/observer";
 
-export default async function insertMoviesByCategory() {
+export default async function insertMoviesByCategory({isLazy = false} = {}) {
     const categoryHash = location.hash;
     let categoryId = null;
     let categoryName = 'Action';
@@ -18,7 +19,10 @@ export default async function insertMoviesByCategory() {
             console.error(movies);
         } else if (movies != null) {
             $('.categories-page .title__selection').innerText = categoryName;
-            renderMovies({ movies, selector: '.movies--list' });
+
+            const renderProps = { movies, selector: '.movies--list', isLazy }
+            renderMovies(renderProps);
+            if(renderProps.isLazy) createObserver({parentNode: $('.movies--list')});
         }
     } catch (error) {
         console.error(error);

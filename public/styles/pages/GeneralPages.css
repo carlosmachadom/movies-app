@@ -57,8 +57,15 @@
 }
 
 .page-container .movie-header .header--info {
+    width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: start;
+}
+
+.page-container .movie-header .header--info .info-image  img {
+    min-width: 300px;
+    width: 100%;
+    max-width: 320px;
 }
 
 .page-container .movie-header .header--info .details-container {

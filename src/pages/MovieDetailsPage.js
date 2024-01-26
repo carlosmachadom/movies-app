@@ -3,6 +3,12 @@ import getMovieMyId from "@api/getMovieById";
 import categoryColors from "@utils/constants/category-colors";
 import createMovieCardsLoadingSkeletons from "@utils/dom/renderMovieCardSkeletons";
 
+import notFoundImage from '@images/image_not_found.png';
+const BASE_CARD_IMAGE_URL = 'https://image.tmdb.org/t/p/w300';
+
+import notFoundBackgroundImage from '@images/background_image_not_found.png';
+const BASE_BACKGROUND_IMAGE_URL = 'https://image.tmdb.org/t/p/w300';
+
 const MovieDetailsPage = async () => {
     const id = location.hash.split('=')[1];
     
@@ -15,16 +21,17 @@ const MovieDetailsPage = async () => {
         release_date,
         genres
     } = await getMovieMyId({ id });
+    
     const skeletons = createMovieCardsLoadingSkeletons();
 
     return `
         <section class="page-container movie-page details-page">
             <header class="movie-header" style="
-                background-image: url(${`https://image.tmdb.org/t/p/original${backdrop_path}`});
+                background-image: url(${backdrop_path !== null ? `${BASE_BACKGROUND_IMAGE_URL}${backdrop_path}` : notFoundBackgroundImage});
             ">
                 <article class="header--info">
                     <figure class="info-image">
-                        <img src="https://image.tmdb.org/t/p/w300${poster_path}" title="${title}"/>
+                        <img src="${poster_path !== null ? `${BASE_CARD_IMAGE_URL}${poster_path}` : notFoundImage}" title="${title}"/>
                     </figure>
 
                     <div class="details-container">

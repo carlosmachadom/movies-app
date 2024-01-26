@@ -44,10 +44,10 @@ const Home = () => {
     mainContainer.innerHTML = "";
     mainContainer.innerHTML = HomePage();
 
-    insertTrendingMovies();
+    insertTrendingMovies({isLazy: true});
     insertCategories();
-    insertPopularMovies();
-    insertUpcomingMovies();
+    insertPopularMovies({isLazy: true});
+    insertUpcomingMovies({isLazy: true});
 
     const trendingButton = null || $('.trending-btn');
     const categoriesList = null || $('.categories--list');
@@ -140,7 +140,7 @@ const MovieSelected = async () => {
             }
         });
 
-        insertSimilarMovies({ id: movieId });
+        insertSimilarMovies({ id: movieId, isLazy: true });
     }
 }
 

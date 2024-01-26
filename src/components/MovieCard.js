@@ -5,7 +5,7 @@ class MovieCard extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['movie-title', 'image-src'];
+        return ['movie-title', 'image-src', 'is-lazy'];
     }
 
     attributeChangedCallback(attr, oldAttr, newAttr) {
@@ -33,13 +33,17 @@ class MovieCard extends HTMLElement {
                 .movie-card {
                     min-width: 190px;
                     width: 100%;
-                    max-width: 220px;                    
+                    max-width: 260px;                    
                 }
 
                 .movie-card .card-image,
                 .movie-card .card-image img {
                     width: 100%;
                     height: 330px;
+                }
+
+                .movie-card .card-image img {
+                    object-fit: cover;
                 }
 
                 .movie-card .card-image {
@@ -56,7 +60,7 @@ class MovieCard extends HTMLElement {
             <article class="movie-card">
                 <figure class="card-image">
                     <img
-                        src=""
+                        src="${(this.dataset.isLazy === "false") ? this.dataset.movieSrc : ""}"
                         alt="${this.dataset.movieTitle}"
                         draggable="false"
                     />

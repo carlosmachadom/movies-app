@@ -1,8 +1,10 @@
 import "@components/MovieCard.js"
 import { $ } from "@utils/dom/selectors.js";
+import notFoundImage from '@images/image_not_found.png';
+const BASE_CARD_IMAGE_URL = 'https://image.tmdb.org/t/p/w300';
 
-export default function renderMovies({ movies = [], selector = "" } = {}) { 
-    if (movies.length != 0 && selector != "") {
+export default function renderMovies({ movies = [], selector = "", isLazy = false } = {}) { 
+    if (selector != "") {
         $(selector).innerHTML = "";
 
         movies.forEach(movie => {
@@ -15,7 +17,8 @@ export default function renderMovies({ movies = [], selector = "" } = {}) {
 
             const movieCard = document.createElement('movie-card');
             movieCard.dataset.movieTitle = movie.title;
-            movieCard.dataset.movieSrc = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
+            movieCard.dataset.movieSrc = movie.poster_path !== null ? `${BASE_CARD_IMAGE_URL}${movie.poster_path}` : notFoundImage;
+            movieCard.dataset.isLazy = isLazy;
 
             movieLink.appendChild(movieCard);
             movieListItem.appendChild(movieLink);
